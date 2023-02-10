@@ -1,0 +1,16 @@
+<div class="sidebar-wrapper">
+  <div class="logo">
+    <a routerLinkActive="/" class="simple-text logo-normal">
+      Welcome {{user.username}}
+    </a>
+  </div>
+  <ul class="nav">
+    <li *ngFor="let menuItem of accessibleMenuItems" routerLinkActive="active" class="{{menuItem.class}}">
+      <a [routerLink]="[menuItem.path]">
+        <i class="fa {{menuItem.icon}}"></i>
+        <p>{{menuItem.title}}</p>
+      </a>
+    </li>
+
+  </ul>
+</div>

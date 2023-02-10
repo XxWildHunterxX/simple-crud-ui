@@ -1,0 +1,46 @@
+<div class="row">
+  <div class="col-md-12">
+    <div class="card">
+      <div class="card-header">
+        <h4 class="card-title">User List</h4>
+      </div>
+      <div class="card-body">
+        <a type="button" class="btn btn-primary" routerLink="/admin/user/add">Add User</a>
+        <br />
+        <br />
+        <div class="table-responsive">
+          <table class="table" datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger">
+            <thead>
+              <tr>
+                <th>Username</th>
+                <th>Name</th>
+                <th>Birth Date</th>
+                <th>Age</th>
+                <th>Phone Number</th>
+                <th>Active</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let i of data">
+                <td>{{i.username}}</td>
+                <td>{{i.name}}</td>
+                <td>{{i.birthDate | date: 'dd-MM-yyyy'}}</td>
+                <td>{{i.age}}</td>
+                <td>({{i.countryCode}}) {{i.phoneNumber}}</td>
+                <td>{{i.isActive == false ? "No" :"Yes"}}</td>
+                <td>
+                  <a class="btn btn-primary btn-sm" [routerLink]="'/admin/user/edit/' + i.id">Edit</a><br />
+                  <button [ngClass]="i.isActive == true ? 'btn btn-danger btn-sm' : 'btn btn-success btn-sm'"
+                    (click)="i.isActive == true ? deactivate(i.id) : reactivate(i.id)">{{i.isActive === true ?
+                    "Deactivate" : "Reactivate"}}</button><br />
+                </td>
+
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

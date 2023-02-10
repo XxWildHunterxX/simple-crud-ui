@@ -1,0 +1,55 @@
+<div class="row">
+  <div class="col-12">
+    <div class="card card-user">
+      <div class="card-header">
+        <h5 class="card-title">Edit User</h5>
+      </div>
+      <div class="card-body">
+        <form [formGroup]="form" (submit)="submit(form.value)">
+          <div class="row">
+            <div class="col-8">
+              <div class="form-group">
+                <label>Username *</label>
+                <input readonly type="text" class="form-control" formControlName="username">
+              </div>
+            </div>
+            <div class="col-8">
+              <div class="form-group">
+                <label>Name</label>
+                <input type="text" class="form-control" formControlName="name">
+              </div>
+            </div>
+            <div class="col-8">
+              <div class="form-group">
+                <label>Birth Date</label>
+                <input type="date" class="form-control" formControlName="birthDate" />
+              </div>
+            </div>
+            <div class="col-8">
+              <div class="form-group">
+                <label>Country Code</label>
+                <select class="form-control" [(ngModel)]="defaultCountryCodeValue" formControlName="countryCode">
+                  <option *ngFor="let option of countrycode" [value]="option.dial_code">
+                    ({{option.dial_code}}) {{option.name}}
+                  </option>
+                </select>
+              </div>
+            </div>
+            <div class="col-8">
+              <div class="form-group">
+                <label>Phone</label>
+                <input type="number" class="form-control" formControlName="phoneNumber" />
+              </div>
+            </div>
+            <div class="row">
+              <div class="update ml-auto mr-auto">
+                <button type="submit" class="btn btn-primary btn-round">Update</button>
+                <a class="btn btn-primary btn-round" [routerLink]="'/admin/user/list/'">Cancel</a>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
